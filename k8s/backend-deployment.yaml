@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postnummer-api
+  namespace: app-postnummer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postnummer-api
+  template:
+    metadata:
+      labels:
+        app: postnummer-api
+    spec:
+      containers:
+        - name: backend
+          image: harbor.az.softis.net/shp-api-postnummer/webapi:latest
+          imagePullPolicy: Always
+          env:
+            - name: AllowedHosts__0
+              value: https://postnummer.az.softis.net
+      imagePullSecrets:
+        - name: harbor-robot-postnummer
