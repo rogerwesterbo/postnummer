@@ -1,8 +1,0 @@
-apiVersion: security.istio.io/v1beta1
-kind: PeerAuthentication
-metadata:
-  name: app-postnummer-mtls
-  namespace: app-postnummer
-spec:
-  mtls:
-    mode: DISABLE
